@@ -1,0 +1,23 @@
+{
+  "name": "fooder",
+  "version": "1.0.0",
+  "description": "food search app",
+  "main": "index.js",
+  "scripts": {
+    "test": "fooder_test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jason-cmk/fooder.git"
+  },
+  "author": "Jason Kang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jason-cmk/fooder/issues"
+  },
+  "homepage": "https://github.com/jason-cmk/fooder#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0"
+  }
+}

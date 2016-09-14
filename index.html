@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Moodify</title>
+        <title>Fooder</title>
         <!--Boostrap's CSS-->
         <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
         <!--Custom CSS-->
@@ -9,12 +9,23 @@
     </head>
     <body>
         <div class="container" id="page-container">
-            
+            <div class="map-container text-center">
+            <iframe
+            id="google-map"
+            width="600"
+            height="450"
+            frameborder="0" style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDB79fdLBwf9fpbRlGZGfEwzMITxvkS6Nk
+                &q=Auckland" allowfullscreen>
+            </iframe>
+            </div>
         </div>
-        <div class="fb-container">
-        <div class="fb-comments" data-href="http://moodmewebapp.azurewebsites.net/" data-numposts="5"></div>
+            <div class="fb-container text-center">
+            <div class="fb-comments" data-href="http://moodmewebapp.azurewebsites.net/" data-numposts="5"></div>
+            </div>
         </div>
 
+        <!--PLUG INS-->
         <!--jQuery Script-->
         <script src="./node_modules/jquery/dist/jquery.min.js"></script>
         <!--Bootstrap Script-->
