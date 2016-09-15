@@ -30,24 +30,23 @@ function search() {
     var category = $("#categories").val();
     $.ajax({
       url: baseUrl,
-      dataType: 'jsonp',
+      dataType: "jsonp",
+      contentType: "application/json"
       beforeSend: function (xhrObj) {
             // Request headers
-            xhrObj.setRequestHeader("user-key", "281e20b69128a60717aa2fb9202470c2");
-            xhrObj.setRequestHeader("Access-Control-Allow-Origin", "http://fooder-search.azurewebsites.net")
+            xhrObj.setRequestHeader("user_key", "281e20b69128a60717aa2fb9202470c2");
+            // xhrObj.setRequestHeader("Access-Control-Allow-Origin", "http://fooder-search.azurewebsites.net")
         },
         type: "POST",
     })
         .done(function (data) {
-            if (data.length != 0) { // if a face is detected
-                // Get the emotion scores
+            if (data.length != 0) { 
                 console.log(results);
             } else {
-                results.innerHTML = "Hmm, we can't detect a human face in that photo. Try another?";
+              console.log('no data')
             }
         })
         .fail(function (error) {
-          alert('asdafdsa');
             console.log(error.getAllResponseHeaders());
     });
 };
