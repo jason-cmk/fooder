@@ -1,87 +1,51 @@
-// function getLocation() {
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(savePosition);
-//     } else {
-//         alert("Geolocation is not supported by this browser.");
-//     }
-// }
-// getLocation();
-function savePosition(position  ) {
-  var lat = position.coords.latitude;
-  var long = position.coords.longitude; 
-}
-
-$.getJSON( "./assets/data.txt", function(data) {
-  var categories = data['categories'];
-  $.each(categories, function(key, value) {
-    var id = value['categories']['id'];
-    var name = value['categories']['name'];
-    var option = $("<option value=\"" + id +"\">" + name + "</option>")
-    $("#categories").append(option);
-  })
-});
-// Zomato API
-// KEY dc6f27f7a384369287a372dd32685080
-
-//  yelp 
-// Consumer Key Kfm6XvRhNhNOuBolKBt3cw
-// Consumer Secret	u31V1Zz_qRwdQurDr2ibKJdPGXE
-// Token	B2xmnDLtakXtqfeSVwrO7HOwt0l7F256
-// Token Secret	4Co9cHLVLIRiAr7AxkjQFzQJeU4
-
-function search() {
-    // var baseUrl = "https://api.yelp.com/v2/search/?location=San Francisco, CA"
-    // $.ajax({
-    //     crossDomain: true,
-    //     url: baseUrl,
-    //     // url: "http://jsonplaceholder.typicode.com/posts/1",
-    //     method: "POST",
-    //     contentType: "application/json",
-    //     dataType: "jsonp",
-    //     jsonpCallback: "my_callback"
-    // })
-    //     .done(function (data) {
-    //         alert('success');
-    //         if (data.length != 0) { 
-    //             console.log(results);
-    //         } else {
-    //           console.log('no data');
-    //         }
-    //     })
-    //     .fail(function (error) {
-    //         alert('fail');
-    //         console.log(error.getAllResponseHeaders());
-    // });
-    var oauth = OAuth({
-    consumer: {
-        key: 'Kfm6XvRhNhNOuBolKBt3cw',
-        secret: 'u31V1Zz_qRwdQurDr2ibKJdPGXE'
-    },
-    signature_method: 'HMAC-SHA1',
-    hash_function: function(base_string, key) {
-        return CryptoJS.HmacSHA1(base_string, key).toString(CryptoJS.enc.Base64);
-    }
+function search(term) {
+    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+    url += '?' + $.param({
+        'api-key': "5ad7731fb2cc49908c4653e3770b6bc3",
+        'q': term
     });
-    var request_data = {
-        url: 'https://api.yelp.com/v2/search?term=food&location=San+Francisco',
-        method: 'GET',
-    };
-    var token = {
-        key: 'B2xmnDLtakXtqfeSVwrO7HOwt0l7F256',
-        secret: '4Co9cHLVLIRiAr7AxkjQFzQJeU4'
-    };
     $.ajax({
-        url: request_data.url,
-        type: request_data.method,
-        headers: oauth.toHeader(oauth.authorize(request_data, token)),
-        dataType : 'jsonp',
-        jsonpCallback : 'cb',
-        async : 'false',
-        cache: true,
-    }).done(function(data) {
-        //process your data here
-        console.log(data);
-    }).fail(function(error) {
-        console.log(error);
-    })
-};
+        url: url,
+        method: 'GET',
+    }).done(function (result) {
+        var articles = result['response']['docs'];
+        if (articles.length > 0) {
+            $("#articles").append($("<h2>Here are some articles..</h2>"));
+            $.each(articles, function (index, value) {
+                var article = $("<div class=\"row\"><a href=" + value.web_url + " >" + value.snippet + "</a></div>");
+                $("#articles").append(article);
+            });
+        }
+    }).fail(function (err) {
+        throw err;
+    });
+}
+;
+$.ajax({
+    url: "http://nflarrest.com/api/v1/crime",
+    method: 'GET',
+}).done(function (data) {
+    $.each(data, function (index, value) {
+        var name = value['Category'];
+        var arrestCount = value['arrest_count'];
+        var option = $("<option value=\"" + name + "\">" + name + "</option>");
+        $("#categories").append(option);
+    });
+});
+function nfl() {
+    var crime = $("#categories").val();
+    $.ajax({
+        url: "http://nflarrest.com/api/v1/crime/topTeams/" + encodeURIComponent(crime.trim()),
+        method: 'GET',
+    }).done(function (data) {
+        var value = data[0];
+        var team = value['Team'];
+        var team_name = value['Team_name'];
+        var team_city = value['Team_city'];
+        var arrestCount = value['arrest_count'];
+        var element = $("<div>" + team_city + " " + team_name + "</div>");
+        $("#results")[0].innerHTML = "";
+        $("#results").append(element);
+        search(team_name + " " + team_city + " " + crime);
+    });
+}

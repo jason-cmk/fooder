@@ -11,19 +11,13 @@
         <div class="container" id="page-container">
             <form>
             <div class="form-group">
-                <label for="inputSearch">Search</label>
-                <input type="search" class="form-control" id="inputSearch" placeholder="Search">
-                <label for="sort-by">Sort by:</label>
-                <select class="form-control" id="sortBy">>
-                    <option default value="real_distance">Halfway</option>
-                    <option value="rating">Highest rated</option>
-                    <option value="cost">Cost</option>
+                <label for="categories"><h1 class="text-center">WHICH NFL TEAM IS THE BEST AT THEIR RESPECTIVE CATEGORIES?</h1></label>
+                <select class="form-control" id="categories" onchange="nfl()">
+                    <option></option>
                 </select>
-                <label for="categories">Category:</label>
-                <select class="form-control" id="categories">
-                </select>
-                <button type="button" class="btn btn-default" onclick="search()">Search</button>
-                <div class="results">
+                <div id="results">
+                </div>
+                <div id="articles">
                 </div>
             </div>
             </form>
@@ -46,14 +40,6 @@
         js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7";
         fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-        <!--FOOD-->
-        <!-- sha1 -->
-        <script src="./js/CryptoJS v3.1.2/rollups/hmac-sha1.js"></script>
-        <!-- sha256 -->
-        <script src="./js/CryptoJS v3.1.2/rollups/hmac-sha256.js"></script>
-
-        <script src="./js/CryptoJS v3.1.2/components/enc-base64-min.js"></script>
-        <script src="./js/oauth-1.0a.js"></script>
         <!--Custom Script-->
         <script src="./js/index.js"></script>
     </body>
