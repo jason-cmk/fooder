@@ -12,7 +12,7 @@ function search(term) {
         if (articles.length > 0) {
             $("#articles").append($("<h2>Here are some articles..</h2>"));
             $.each(articles, function (index, value) {
-                var article = $("<div class=\"row\"><a href=" + value.web_url + " >" + value.snippet + "</a></div>");
+                var article = $("<div class=\"row\"><a target=\"_blank\" href=" + value.web_url + " >" + value.snippet + "</a></div>");
                 $("#articles").append(article);
             });
         }
@@ -43,7 +43,7 @@ function nfl() {
         var team_name = value['Team_name'];
         var team_city = value['Team_city'];
         var arrestCount = value['arrest_count'];
-        var element = $("<div>" + team_city + " " + team_name + "</div>");
+        var element = $("<div class=\"text-center answer\"> and the winner is... <div class=\"big-text\" >" + team_city + " " + team_name + "</div></div>");
         $("#articles")[0].innerHTML = "";
         $("#results")[0].innerHTML = "";
         $("#results").append(element);

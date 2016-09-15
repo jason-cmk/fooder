@@ -10,3 +10,9 @@ html, body {
 .form-group {
     margin-top: 20%;
 }
+.answer {
+    margin-top: 5%;
+}
+.big-text {
+    font-size: 30px;
+}

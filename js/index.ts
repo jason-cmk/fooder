@@ -14,7 +14,7 @@ function search(term : string) {
         if (articles.length > 0) {
             $("#articles").append($("<h2>Here are some articles..</h2>"));
         $.each(articles, function(index, value) {
-            var article : HTMLDivElement = <HTMLDivElement> $("<div class=\"row\"><a href=" + value.web_url + " >" + value.snippet +  "</a></div>");
+            var article : HTMLDivElement = <HTMLDivElement> $("<div class=\"row\"><a target=\"_blank\" href=" + value.web_url + " >" + value.snippet +  "</a></div>");
             $("#articles").append(article);
         })
         }
@@ -46,7 +46,7 @@ function nfl() {
             var team_name : string = value['Team_name'];
             var team_city : string = value['Team_city']
             var arrestCount : number = value['arrest_count'];
-            var element : HTMLDivElement = <HTMLDivElement> $("<div>" + team_city + " " + team_name + "</div>")
+            var element : HTMLDivElement = <HTMLDivElement> $("<div class=\"text-center answer\"> and the winner is... <div class=\"big-text\" >" + team_city + " " + team_name + "</div></div>")
             $("#articles")[0].innerHTML = "";
             $("#results")[0].innerHTML = "";
             $("#results").append(element);
