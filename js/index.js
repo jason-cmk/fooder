@@ -30,6 +30,7 @@ function search() {
     var category = $("#categories").val();
     $.ajax({
       url: baseUrl,
+      datatype: 'jsonp',
       beforeSend: function (xhrObj) {
             // Request headers
             xhrObj.setRequestHeader("user-key", "281e20b69128a60717aa2fb9202470c2");
