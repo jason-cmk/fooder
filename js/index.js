@@ -11,43 +11,41 @@ function savePosition(position) {
   var long = position.coords.longitude; 
 }
 
-$.getJSON( "./assets/categories.json", function(data) {
-  $.each(data, function(key, value) {
-    var option = $("<option value=\"" + value.alias +"\">" + value.title + "</option>")
+$.getJSON( "./assets/zomato.json", function(data) {
+  var categories = data['categories'];
+  $.each(categories, function(key, value) {
+    var id = value['categories']['id'];
+    var name = value['categories']['name'];
+    var option = $("<option value=\"" + id +"\">" + name + "</option>")
     $("#categories").append(option);
   })
 });
 
-// Yelp call
-var Yelp = require('yelp');
-
-var yelp = new Yelp({
-  consumer_key: 'Kfm6XvRhNhNOuBolKBt3cw',
-  consumer_secret: 'u31V1Zz_qRwdQurDr2ibKJdPGXE',
-  token: 'B2xmnDLtakXtqfeSVwrO7HOwt0l7F256',
-  token_secret: '4Co9cHLVLIRiAr7AxkjQFzQJeU4',
-});
-
-// See http://www.yelp.com/developers/documentation/v2/search_api
-yelp.search({ term: 'food', location: 'Montreal' })
-.then(function (data) {
-  console.log(data);
-})
-.catch(function (err) {
-  console.error(err);
-});
-
-// See http://www.yelp.com/developers/documentation/v2/business
-yelp.business('yelp-san-francisco')
-  .then(console.log)
-  .catch(console.error);
-
-yelp.phoneSearch({ phone: '+15555555555' })
-  .then(console.log)
-  .catch(console.error);
-
-// A callback based API is also available:
-yelp.business('yelp-san-francisco', function(err, data) {
-  if (err) return console.log(error);
-  console.log(data);
-});
+// Zomato API
+// KEY 281e20b69128a60717aa2fb9202470c2
+function search() {
+    var baseUrl = "https://developers.zomato.com/api/v2.1/search?";
+    var search = $("#inputSearch").val();
+    var sortBy = $("#sortBy").val();
+    var category = $("#categories").val();
+    $.ajax({
+      url: baseUrl,
+      beforeSend: function (xhrObj) {
+            // Request headers
+            xhrObj.setRequestHeader("user-key", "281e20b69128a60717aa2fb9202470c2");
+        },
+        type: "POST",
+    })
+        .done(function (data) {
+            if (data.length != 0) { // if a face is detected
+                // Get the emotion scores
+                console.log(results);
+            } else {
+                results.innerHTML = "Hmm, we can't detect a human face in that photo. Try another?";
+            }
+        })
+        .fail(function (error) {
+            pageheader.innerHTML = "Sorry, something went wrong. :( Try again in a bit?";
+            console.log(error.getAllResponseHeaders());
+    });
+};

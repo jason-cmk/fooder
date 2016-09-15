@@ -14,10 +14,10 @@
                 <label for="inputSearch">Search</label>
                 <input type="search" class="form-control" id="inputSearch" placeholder="Search">
                 <label for="sort-by">Sort by:</label>
-                <select class="form-control" id="sort-by">>
-                    <option default value=0>Best matched</option>
-                    <option value=1>Distance</option>
-                    <option value=2>Highest Rated</option>
+                <select class="form-control" id="sortBy">>
+                    <option default value="real_distance">Halfway</option>
+                    <option value="rating">Highest rated</option>
+                    <option value="cost">Cost</option>
                 </select>
                 <label for="categories">Category:</label>
                 <select class="form-control" id="categories">
@@ -46,11 +46,6 @@
         js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7";
         fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-        <!--Browserify Script-->
-        <script src=".node_modules/browserify/index.js"></script>
-        <script src="bundle.js"></script>
-        <!--Yelp SDK-->
-        <script src="./node_modules/yelp/index.js"></script>
         <!--Custom Script-->
         <script src="./js/index.js"></script>
     </body>
