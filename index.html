@@ -47,12 +47,13 @@
         fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
         <!--FOOD-->
-        <script>
-        function myCallback(data){
-            console.log(data);
-        }
-        </script>
-        <script type="text/javascript" src="http://food2fork.com/api/search?key=dc6f27f7a384369287a372dd32685080&q=shredded%20chicken&callback=myCallback"></script>
+        <!-- sha1 -->
+        <script src="./js/CryptoJS v3.1.2/rollups/hmac-sha1.js"></script>
+        <!-- sha256 -->
+        <script src="./js/CryptoJS v3.1.2/rollups/hmac-sha256.js"></script>
+
+        <script src="./js/CryptoJS v3.1.2/components/enc-base64-min.js"></script>
+        <script src="./js/oauth-1.0a.js"></script>
         <!--Custom Script-->
         <script src="./js/index.js"></script>
     </body>
