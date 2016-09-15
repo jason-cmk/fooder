@@ -1,11 +1,11 @@
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(savePosition);
-    } else {
-        alert("Geolocation is not supported by this browser.");
-    }
-}
-getLocation();
+// function getLocation() {
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(savePosition);
+//     } else {
+//         alert("Geolocation is not supported by this browser.");
+//     }
+// }
+// getLocation();
 function savePosition(position  ) {
   var lat = position.coords.latitude;
   var long = position.coords.longitude; 
