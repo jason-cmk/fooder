@@ -47,6 +47,7 @@ function search() {
             }
         })
         .fail(function (error) {
+          alert('asdafdsa');
             console.log(error.getAllResponseHeaders());
     });
 };
