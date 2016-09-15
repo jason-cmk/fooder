@@ -12,28 +12,33 @@ html, body {
 }
 .answer {
     margin-top: 5%;
+    color: #0052cc;
+    font-size: 25px;
 }
 .big-text {
-    font-size: 40px;
+    font-size: 100px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .white-background {
-    background-color: white;
+    background-color: #fafafa;
 }
 h1 {
     font-family: impact;
+    -webkit-text-stroke: 1px black;
+    color: white;
+}
+h2 {
+    margin-bottom: 20px;
+    font-style: italic;
 }
 #articles {
     display: none;
     background: white;
     padding: 5%;
-    border: 2px solid;
-    border-radius: 25px;
+    border-radius: 15px;
     border-color: #444;
     margin-top: 5%;
 }
 a {
     font-family:  'Times New Roman', Times, serif;
-}
-#results {
 }
