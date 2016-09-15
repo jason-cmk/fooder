@@ -26,28 +26,37 @@ function searchCallback(data) {
   console.log(data);
 };
 
-function search(searchCallback) {
-    var baseUrl = "http://food2fork.com/api/search?key=dc6f27f7a384369287a372dd32685080&q=shredded%20chicken"
-    var search = $("#inputSearch").val();
-    var sortBy = $("#sortBy").val();
-    var category = $("#categories").val();
-    $.ajax({
-        url: baseUrl,
-        method: "POST",
-        headers: {
-          'content-type': "application/json"
-        },
-    })
-        .done(function (data) {
-            alert('success');
-            if (data.length != 0) { 
-                console.log(results);
-            } else {
-              console.log('no data');
-            }
-        })
-        .fail(function (error) {
-            alert('fail');
-            console.log(error.getAllResponseHeaders());
-    });
-};
+// function search(searchCallback) {
+//     var baseUrl = "http://food2fork.com/api/search?key=dc6f27f7a384369287a372dd32685080&q=shredded%20chicken"
+//     var search = $("#inputSearch").val();
+//     var sortBy = $("#sortBy").val();
+//     var category = $("#categories").val();
+//     $.ajax({
+//         url: baseUrl,
+//         method: "POST",
+//         headers: {
+//           'content-type': "application/json",
+//           'dataType': 'jsonp',
+//         },
+//     })
+//         .done(function (data) {
+//             alert('success');
+//             if (data.length != 0) { 
+//                 console.log(results);
+//             } else {
+//               console.log('no data');
+//             }
+//         })
+//         .fail(function (error) {
+//             alert('fail');
+//             console.log(error.getAllResponseHeaders());
+//     });
+// };
+function my_callback(data) {
+    console.log(data);
+}
+function search(){
+    script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "http://food2fork.com/api/search?key=dc6f27f7a384369287a372dd32685080&q=shredded%20chicken&callback=my_callback";
+}
