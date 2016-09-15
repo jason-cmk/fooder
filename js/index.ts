@@ -1,5 +1,7 @@
-function search(term) {
-    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+declare var $:any;
+
+function search(term : string) {
+    var url : string = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
     url += '?' + $.param({
       'api-key': "5ad7731fb2cc49908c4653e3770b6bc3",
       'q': term
@@ -8,11 +10,11 @@ function search(term) {
       url: url,
       method: 'GET',
     }).done(function(result) {
-        var articles = result['response']['docs'];
+        var articles : any = result['response']['docs'];
         if (articles.length > 0) {
             $("#articles").append($("<h2>Here are some articles..</h2>"));
         $.each(articles, function(index, value) {
-            var article = $("<div class=\"row\"><a href=" + value.web_url + " >" + value.snippet +  "</a></div>");
+            var article : HTMLDivElement = <HTMLDivElement> $("<div class=\"row\"><a href=" + value.web_url + " >" + value.snippet +  "</a></div>");
             $("#articles").append(article);
         })
         }
@@ -26,25 +28,26 @@ $.ajax({
     method: 'GET',
     }).done(function(data){
     $.each(data, function(index, value) {
-        var name = value['Category'];
-        var arrestCount = value['arrest_count'];
-        var option = $("<option value=\"" + name +"\">" + name + "</option>")
+        var name : string = value['Category'];
+        var arrestCount : string = value['arrest_count'];
+        var option : HTMLOptionElement =  <HTMLOptionElement> $("<option value=\"" + name +"\">" + name + "</option>")
         $("#categories").append(option);
     })
 });
 
 function nfl() {
-    var crime = $("#categories").val();
+    var crime : string = $("#categories").val();
     $.ajax({
         url: "http://nflarrest.com/api/v1/crime/topTeams/" +  encodeURIComponent(crime.trim()),
         method: 'GET',
         }).done(function(data){
-            var value = data[0];
-            var team = value['Team'];
-            var team_name = value['Team_name'];
-            var team_city = value['Team_city']
-            var arrestCount = value['arrest_count'];
-            var element = $("<div>" + team_city + " " + team_name + "</div>")
+            var value : Object = data[0];
+            var team : string = value['Team'];
+            var team_name : string = value['Team_name'];
+            var team_city : string = value['Team_city']
+            var arrestCount : number = value['arrest_count'];
+            var element : HTMLDivElement = <HTMLDivElement> $("<div>" + team_city + " " + team_name + "</div>")
+            $("#articles")[0].innerHTML = "";
             $("#results")[0].innerHTML = "";
             $("#results").append(element);
             search(team_name + " " + team_city + " " + crime);

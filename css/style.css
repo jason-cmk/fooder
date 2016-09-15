@@ -3,10 +3,10 @@ html, body {
     height: 100%;
     font-weight: 100%;
     margin: 0;
+    font-size: 100%;
     padding: 0;
     background-image: url("http://www.pixelstalk.net/wp-content/uploads/2016/04/Backgrounds-NFL-wallpapers-HD.jpg");
 }
-
 .form-group {
     margin-top: 20%;
 }

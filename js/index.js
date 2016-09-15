@@ -44,6 +44,7 @@ function nfl() {
         var team_city = value['Team_city'];
         var arrestCount = value['arrest_count'];
         var element = $("<div>" + team_city + " " + team_name + "</div>");
+        $("#articles")[0].innerHTML = "";
         $("#results")[0].innerHTML = "";
         $("#results").append(element);
         search(team_name + " " + team_city + " " + crime);
