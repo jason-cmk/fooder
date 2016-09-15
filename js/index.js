@@ -20,24 +20,30 @@ $.getJSON( "./assets/data.txt", function(data) {
     $("#categories").append(option);
   })
 });
-
 // Zomato API
 // KEY 281e20b69128a60717aa2fb9202470c2
+function searchCallback(data) {
+  console.log(data);
+};
+
 function search() {
     var baseUrl = "https://developers.zomato.com/api/v2.1/search?";
     var search = $("#inputSearch").val();
     var sortBy = $("#sortBy").val();
     var category = $("#categories").val();
     $.ajax({
-      url: baseUrl,
-      dataType: "jsonp",
-      contentType: "application/json",
-      beforeSend: function (xhrObj) {
-            // Request headers
-            xhrObj.setRequestHeader("user_key", "281e20b69128a60717aa2fb9202470c2");
-            // xhrObj.setRequestHeader("Access-Control-Allow-Origin", "http://fooder-search.azurewebsites.net")
+        "async": true,
+        "crossDomain": true,
+        "url": "https://developers.zomato.com/api/v2.1/search?callback=searchCallback",
+        "method": "POST",
+        "headers": {
+          "user-key": "281e20b69128a60717aa2fb9202470c2",
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "postman-token": "722054ae-9d1c-f0ad-f6f0-88f81a421bd5"
         },
-        type: "POST",
+        "processData": false,
+        "dataType": "jsonp"
     })
         .done(function (data) {
             if (data.length != 0) { 
