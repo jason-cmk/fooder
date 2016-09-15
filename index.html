@@ -46,6 +46,13 @@
         js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7";
         fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
+        <!--FOOD-->
+        <script>
+        function myCallback(data){
+            console.log(data);
+        }
+        </script>
+        <script type="text/javascript" src="http://food2fork.com/api/search?key=dc6f27f7a384369287a372dd32685080&q=shredded%20chicken&callback=myCallback"></script>
         <!--Custom Script-->
         <script src="./js/index.js"></script>
     </body>
