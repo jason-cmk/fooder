@@ -17,12 +17,23 @@ html, body {
     font-size: 40px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-.fb-container {
+.white-background {
     background-color: white;
 }
 h1 {
     font-family: impact;
 }
 #articles {
+    display: none;
     background: white;
+    padding: 5%;
+    border: 2px solid;
+    border-radius: 25px;
+    border-color: #444;
+    margin-top: 5%;
+}
+a {
+    font-family:  'Times New Roman', Times, serif;
+}
+#results {
 }

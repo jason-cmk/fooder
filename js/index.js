@@ -10,12 +10,15 @@ function search(term) {
         method: 'GET',
     }).done(function (result) {
         var articles = result['response']['docs'];
+        $("#articles").append($("<h2>Here are some articles..</h2>")).css("display", "block");
         if (articles.length > 0) {
-            $("#articles").append($("<h2>Here are some articles..</h2>"));
             $.each(articles, function (index, value) {
-                var article = $("<div class=\"row\"><a target=\"_blank\" href=" + value.web_url + " >" + value.snippet + "</a></div>");
+                var article = $("<div class=\"row\"><a target=\"_blank\" href=" + value.web_url + " >" + value.snippet + "</a></div><hr>");
                 $("#articles").append(article);
             });
+        }
+        else {
+            $("#articles").append($("<div>We couldn't find any articles for this one :(</div>"));
         }
     }).fail(function (err) {
         throw err;
