@@ -1,11 +1,11 @@
 html, body {
-    color: red;
+    color: black;
     height: 100%;
-    font-weight: 100%;
+    font-weight: bold;
     margin: 0;
     font-size: 100%;
     padding: 0;
-    background-image: url("http://www.pixelstalk.net/wp-content/uploads/2016/04/Backgrounds-NFL-wallpapers-HD.jpg");
+    background-image: url("http://cdn.wallpapersafari.com/28/89/0SLtCM.jpg");
 }
 .form-group {
     margin-top: 20%;
@@ -15,4 +15,14 @@ html, body {
 }
 .big-text {
     font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.fb-container {
+    background-color: white;
+}
+h1 {
+    font-family: impact;
+}
+#results {
+    background: white;
 }
