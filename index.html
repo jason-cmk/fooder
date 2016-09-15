@@ -9,30 +9,35 @@
     </head>
     <body>
         <div class="container" id="page-container">
-            <div class="map-container text-center">
-            <iframe
-            id="google-map"
-            width="600"
-            height="450"
-            frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDB79fdLBwf9fpbRlGZGfEwzMITxvkS6Nk
-                &q=Auckland" allowfullscreen>
-            </iframe>
+            <form>
+            <div class="form-group">
+                <label for="inputSearch">Search</label>
+                <input type="search" class="form-control" id="inputSearch" placeholder="Search">
+                <label for="sort-by">Sort by:</label>
+                <select class="form-control" id="sort-by">>
+                    <option default value=0>Best matched</option>
+                    <option value=1>Distance</option>
+                    <option value=2>Highest Rated</option>
+                </select>
+                <label for="categories">Category:</label>
+                <select class="form-control" id="categories">
+                </select>
+                <button type="button" class="btn btn-default" onclick="search()">Search</button>
+                <div class="results">
+                </div>
             </div>
-        </div>
+            </form>
             <div class="fb-container text-center">
-            <div class="fb-comments" data-href="http://moodmewebapp.azurewebsites.net/" data-numposts="5"></div>
-            </div>
+            <div class="fb-comments" data-href="http://food-search.azurewebsites.net/" data-numposts="5"></div></div>
         </div>
 
-        <!--PLUG INS-->
+
+
         <!--jQuery Script-->
         <script src="./node_modules/jquery/dist/jquery.min.js"></script>
         <!--Bootstrap Script-->
         <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!--Custom Script-->
-        <script src="./js/index.js"></script>
-        <!--Facebook Comments Plugin-->
+        <!--Facebook comments-->
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -41,5 +46,12 @@
         js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7";
         fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
+        <!--Browserify Script-->
+        <script src=".node_modules/browserify/index.js"></script>
+        <script src="bundle.js"></script>
+        <!--Yelp SDK-->
+        <script src="./node_modules/yelp/index.js"></script>
+        <!--Custom Script-->
+        <script src="./js/index.js"></script>
     </body>
 </html>
