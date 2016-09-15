@@ -31,7 +31,7 @@ function search() {
     $.ajax({
       url: baseUrl,
       dataType: "jsonp",
-      contentType: "application/json"
+      contentType: "application/json",
       beforeSend: function (xhrObj) {
             // Request headers
             xhrObj.setRequestHeader("user_key", "281e20b69128a60717aa2fb9202470c2");
