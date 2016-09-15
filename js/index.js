@@ -27,14 +27,14 @@ function searchCallback(data) {
 };
 
 function search(searchCallback) {
-    var baseUrl = "http://food2fork.com/api/get?key=dc6f27f7a384369287a372dd32685080&q=shredded%20chicken&callback=my_callback"
+    var baseUrl = "http://food2fork.com/api/get?key=dc6f27f7a384369287a372dd32685080"
     $.ajax({
         crossDomain: true,
-        // url: baseUrl,
-        url: "http://jsonplaceholder.typicode.com/posts/1",
+        url: baseUrl,
+        // url: "http://jsonplaceholder.typicode.com/posts/1",
         method: "POST",
         contentType: "application/json",
-        dataType: "jsonp",
+        // dataType: "jsonp",
         jsonpCallback: "my_callback"
     })
         .done(function (data) {
