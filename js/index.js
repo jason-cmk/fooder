@@ -1,12 +1,12 @@
-// function getLocation() {
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(savePosition);
-//     } else {
-//         alert("Geolocation is not supported by this browser.");
-//     }
-// }
-// getLocation();
-function savePosition(position) {
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(savePosition);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+getLocation();
+function savePosition(position  ) {
   var lat = position.coords.latitude;
   var long = position.coords.longitude; 
 }
@@ -21,38 +21,33 @@ $.getJSON( "./assets/data.txt", function(data) {
   })
 });
 // Zomato API
-// KEY 281e20b69128a60717aa2fb9202470c2
+// KEY dc6f27f7a384369287a372dd32685080
 function searchCallback(data) {
   console.log(data);
 };
 
-function search() {
-    var baseUrl = "https://developers.zomato.com/api/v2.1/search?";
+function search(searchCallback) {
+    var baseUrl = "http://food2fork.com/api/search?key=dc6f27f7a384369287a372dd32685080&q=shredded%20chicken"
     var search = $("#inputSearch").val();
     var sortBy = $("#sortBy").val();
     var category = $("#categories").val();
     $.ajax({
-        "async": true,
-        "crossDomain": true,
-        "url": "https://developers.zomato.com/api/v2.1/search?callback=searchCallback",
-        "method": "POST",
-        "headers": {
-          "user-key": "281e20b69128a60717aa2fb9202470c2",
-          "content-type": "application/json",
-          "cache-control": "no-cache",
-          "postman-token": "722054ae-9d1c-f0ad-f6f0-88f81a421bd5"
+        url: baseUrl,
+        method: "POST",
+        headers: {
+          'content-type': "application/json"
         },
-        "processData": false,
-        "dataType": "jsonp"
     })
         .done(function (data) {
+            alert('success');
             if (data.length != 0) { 
                 console.log(results);
             } else {
-              console.log('no data')
+              console.log('no data');
             }
         })
         .fail(function (error) {
+            alert('fail');
             console.log(error.getAllResponseHeaders());
     });
 };
