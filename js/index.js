@@ -33,7 +33,7 @@ function search() {
       beforeSend: function (xhrObj) {
             // Request headers
             xhrObj.setRequestHeader("user-key", "281e20b69128a60717aa2fb9202470c2");
-            xhrObj.setRequestHeader("Access-Control-Allow-Origin", "http://fooder-search.azurewebsites.net/")
+            xhrObj.setRequestHeader("Access-Control-Allow-Origin", "http://fooder-search.azurewebsites.net")
         },
         type: "POST",
     })
@@ -46,7 +46,6 @@ function search() {
             }
         })
         .fail(function (error) {
-            pageheader.innerHTML = "Sorry, something went wrong. :( Try again in a bit?";
             console.log(error.getAllResponseHeaders());
     });
 };
