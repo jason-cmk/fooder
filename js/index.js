@@ -1,5 +1,6 @@
 function search(term) {
     var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+    term = term.replace(",", " ");
     url += '?' + $.param({
         'api-key': "5ad7731fb2cc49908c4653e3770b6bc3",
         'q': term
