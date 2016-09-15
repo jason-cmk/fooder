@@ -11,7 +11,7 @@ function savePosition(position) {
   var long = position.coords.longitude; 
 }
 
-$.getJSON( "./assets/zomato.json", function(data) {
+$.getJSON( "./assets/data.txt", function(data) {
   var categories = data['categories'];
   $.each(categories, function(key, value) {
     var id = value['categories']['id'];
